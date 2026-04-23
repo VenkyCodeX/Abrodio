@@ -8,7 +8,10 @@ app.use(cors());
 
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "http://localhost:3000", methods: ["GET", "POST"] },
+  cors: {
+    origin: ["http://localhost:3000", "https://chat-city.vercel.app"],
+    methods: ["GET", "POST"],
+  },
 });
 
 // In-memory store: { "city_London": [{sender, text, isAdmin}], ... }
