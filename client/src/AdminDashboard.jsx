@@ -17,7 +17,7 @@ export default function AdminDashboard({ onLogout }) {
   const typingTimeout = useRef(null);
 
   useEffect(() => {
-    socket.emit("join_room", { room, city_id: admin.city_id, country_id: admin.country_id });
+    socket.emit("join_room", { room, city_id: admin.city_id, country_id: admin.country_id }); // eslint-disable-line react-hooks/exhaustive-deps
 
     const onHistory = (history) => setMessages(history);
     const onMessage = (msg) => setMessages((prev) => [...prev, msg]);
