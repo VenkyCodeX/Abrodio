@@ -5,8 +5,14 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://abrodio.vercel.app",
+  /\.vercel\.app$/,
+];
+
 const app = express();
-app.use(cors());
+app.use(cors({ origin: allowedOrigins, methods: ["GET", "POST"] }));
 app.use(express.json());
 
 // Routes
@@ -16,13 +22,10 @@ app.use("/api/messages", require("./routes/messages"));
 
 // Socket.IO
 const server = http.createServer(app);
+
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:3000",
-      "https://abrodio.vercel.app",
-      /\.vercel\.app$/,
-    ],
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
   },
 });

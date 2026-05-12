@@ -5,3 +5,4 @@ build/
 .DS_Store
 server/.env
 client/.env
+# keep .env.production for Vercel build
