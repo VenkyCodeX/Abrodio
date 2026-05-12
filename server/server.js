@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const allowedOrigins = [
   "http://localhost:3000",
   "https://abrodio.vercel.app",
+  "https://abrodio-production.up.railway.app",
   /\.vercel\.app$/,
 ];
 
